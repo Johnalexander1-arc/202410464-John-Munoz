@@ -1,6 +1,6 @@
 #include <iostream>
 
-usinn namespace std;
+using namespace std;
 
 int main(){
     string userName;
@@ -19,7 +19,7 @@ int main(){
     cout <<"Por favor, ingrese un primer numero";
     cin >> numberOne
 
-    cout <<"Por favor, ingrese un segundo numero";
+    cout <<  "Por favor, ingrese un segundo numero";
     cin >> numberTwo;
 
     //salida poor teclado
@@ -28,6 +28,5 @@ int main(){
     cout <<" Su codigo estudiantil:" <<userCode "es valido";
 
     cout <<"la suma de los 2 numeros que usted ingresó es: " <<numberOne + numberTwo <<endl;
-
 
 }
