@@ -17,8 +17,6 @@ cin >>userName;
 cout <<" hola "<< userName ;
 cout <<" Bienvenido al programa, por favor seleciones 2 numeros y la operacion que desea realizar entre ellos: "  <<endl;
 
-cout <<"Elija la operacion a realizar: 1= suma, 2 =resta, 3 = producto, 4 = division , 5 = modulo  : ";
-cin >> option;
 //solicitar numeros
 cout <<"ingrese el primer numero: " <<endl;
 cin >>numberOne;

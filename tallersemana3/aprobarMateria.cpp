@@ -2,15 +2,15 @@
 
 using namespace std;
 
-void approveSubject(int userNote){
+void approveSubject(int Note){
 
-    if(userNote >= 3)
+    if(Note >= 3)
     {
         cout <<"usted aprobo la materia " <<endl;
     }
         else
         {
-            cout <<"usted reprobo la meteria " <<endl;
+            cout <<"usted reprobo la materia " <<endl;
         }
 }
 
