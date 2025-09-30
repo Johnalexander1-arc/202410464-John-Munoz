@@ -5,7 +5,7 @@ using namespace std;
 void conteoascendente(int number1){
     int i=0;
     while(i <= number1){
-    cout << i++<<endl;
+    cout << i*i++ <<endl;
     }
 }
 

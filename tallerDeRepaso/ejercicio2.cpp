@@ -14,6 +14,13 @@ void  clasificarnumero (int number){
      {
         cout <<"el numero es menor a 0 " <<endl;
      } 
+     if(number%5==0)
+     {
+        cout <<"el numero es divisible entre 5";
+     }else
+     {
+        cout <<"el numero no es divisible entre 5";
+     }
 }
      int main(){
         int number;
