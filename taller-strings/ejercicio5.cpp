@@ -13,29 +13,33 @@ void palindromos(){
     cout <<"ingrese la segunda palabra: ";
     cin >>secondWord;
 
-    for(int i =0; i<= firstWord.size(); i++)
+    for(int i = firstWord.size()-1 ; i>=0; i--)
     {
         invertir += firstWord[i];
+    
+    }
 
         if(firstWord==invertir)
         {
-            cout <<"la primera palabra es un palindromo.";
-        }
-    }
-        for(int i=0;i <= secondWord.size(); i++)
+            cout <<"la primera palabra es un palindromo."<<endl;
+        }else
         {
-            invertir2+= secondWord[i];
+            cout <<"la primera palabra no es un palindromo. "<<endl;
+        }
+
+        for(int j= secondWord.size()-1 ; j>=0; j--)
+        {
+            invertir2+= secondWord[j];
+        }
 
             if(secondWord==invertir2)
             {
-                cout <<"la palabra 2 es un pálindromo.";
+                cout <<"la palabra 2 es un pálindromo."<<endl;
+            }else
+            {
+                cout <<"la segunda palabra no es un palindromo. "<<endl;
             }
         }
-        
-    }
-
-
-
 
 int main(){
     palindromos();

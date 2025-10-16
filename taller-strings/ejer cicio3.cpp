@@ -5,7 +5,7 @@ using namespace std;
 void letterCounter(){
     string userWord1;
     string userWord2;
-    int counter=1;
+    int counter=0;
   cout <<"Por favor ingrese una palabra: ";  
   cin >>userWord1;
 
@@ -13,17 +13,18 @@ void letterCounter(){
   cin >>userWord2;
 
   
-  for(int i=0; i <= userWord1.size(); i++)
+  for(int i=0; i < userWord1.size(); i++)
   {
     char letter= userWord1[i];
 
-    for(int i=0; i <= userWord2.size(); i++)
+    for(int j=0; j < userWord2.size(); j++)
     {
-        char letter2= userWord2[i];
+        char letter2= userWord2[j];
 
            if(letter==letter2)
            {
             counter++;
+            break;
            }
     }
   }
