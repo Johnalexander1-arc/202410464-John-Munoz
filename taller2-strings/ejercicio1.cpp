@@ -8,11 +8,8 @@ bool validateLength(string userName)
     if(userName.length() < 6 || userName.length() > 12)
     {
         return false;
-    }else
-    {
-        return true;
     }
-
+    return true;
 }
 
 bool validateFirstLetter(string userName){
@@ -21,10 +18,8 @@ bool validateFirstLetter(string userName){
     if((letter >= 'A' && letter <= 'Z') || letter >= 'a' && letter <= 'z')
     {
         return true;
-    }else
-    {
-        return false;
     }
+    return false;
 }
 
 bool validateNotSpaces( string userName){
@@ -35,18 +30,16 @@ bool validateNotSpaces( string userName){
         if(letter2 == ' ')
         {
             return false;
-        }else
-        {
-            return true;
         }
     }
+    return true;
 }
 
 void validateUserName(){
     string userString;
 
     cout <<"por favor ingrese el nombre de usuario a validar: ";
-    cin >>userString;
+    getline(cin, userString);
 
     bool validation1= validateLength(userString);
     bool validation2= validateFirstLetter(userString);
