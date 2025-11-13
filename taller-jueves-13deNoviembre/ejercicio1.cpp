@@ -6,6 +6,14 @@ void getNewSales(char**& names, int*& values, int& amount){
     cout <<"¿ingrese el numero de ventas que desea registrar: " ;
     cin >>amount;
 
+    if (names != nullptr) {
+    for (int i = 1; i < amount; i++) {
+        delete[] names[i];
+    }
+    delete[] names;
+    delete[] values;
+}
+
     names= new char*[amount];
     values= new int[amount];
 
@@ -21,7 +29,7 @@ void getNewSales(char**& names, int*& values, int& amount){
 cout <<"ventas registradas de forma correcta " <<endl;
 }
 
-void printSales(char** names, int* values, int& amount){
+void printSales(char** names, int* values, int amount){
     if(amount ==0)
     {
         cout <<"no se han registrado ventas " <<endl;
@@ -82,7 +90,7 @@ void findSale(char** names, int* values, int amount){
             j++;
         }
 
-        if(names[i][j]== '\0' !='\0' &&search[j]== '\0'){
+        if(names[i][j]== '\0' &&search[j]== '\0'){
             cout <<"venta encontrada en la posicion " <<i+1 <<"con valor $" <<values[i] <<endl;
             found =true;
             break;
@@ -92,7 +100,7 @@ void findSale(char** names, int* values, int amount){
 if(!found )cout <<"venta no encontrada " <<endl;
 }
 
-void salesInRange(char** names, int* values, int& amount){
+void salesInRange(char** names, int* values, int amount){
         if(amount ==0){
        cout <<"no hay ventas registradas aun " <<endl;
         return;
@@ -121,6 +129,11 @@ void calculateTotal(int* values, int amount){
         cout <<"no hay ventas registradas " <<endl;
         return;
     }
+    int total=0; 
+    for(int i=0; i < amount; i++){
+        total+= values[i];
+    }
+    cout <<"el total de ventas es: $" <<total <<endl;
 }
 void run(){
     char** names = nullptr;
@@ -132,21 +145,39 @@ void run(){
         cout <<"------MENU DE VENTAS------" <<endl;
 
         cout <<"1. Registrar o reiniciar ventas; " <<endl;
+        cout <<"2. mostrar las ventas " <<endl;
+        cout <<"3. modificar una venta " <<endl;
+        cout <<"4. buscar una vena " <<endl;
+        cout <<"5. mostrar ventas dentro de un rango " <<endl;
+        cout <<"6. calcular el total de ventas " <<endl;
         cout <<"7. salir " <<endl;
-
-         cout <<"por favor seleccione uan opcion: " <<endl;
+        cout <<"por favor seleccione una opcion: " <<endl;
         cin >>option;
 
         switch(option){
             case 1:
             getNewSales(names, values, amount);
             break;
-
+            case 2:
+            printSales(names, values, amount);
+            break;
+            case 3: 
+            modifySales(names, values, amount);
+            break;
+            case 4:
+            findSale(names, values, amount);
+            break;
+            case 5:
+            salesInRange(names, values, amount);
+            break;
+            case 6: 
+            calculateTotal(values, amount);
+            break; 
             case 7: 
                 cout <<"saliendo del programa " <<endl;
                 break;
 
-                default:
+            default:
                     cout <<"la opcion ingresada no es valida " <<endl;
         }
     }
