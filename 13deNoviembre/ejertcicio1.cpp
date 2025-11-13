@@ -4,14 +4,11 @@ using namespace std;
 
 class intoSalesSystem{
     public:
-        char ** names;
+        string* names;
         int* values;
-        int amount=0;
+        int amount;
 
 void run(){
-    char** names = nullptr;
-    int* values = nullptr;
-    int amount=0;
     int option;
 
     do{
@@ -29,22 +26,22 @@ void run(){
 
         switch(option){
             case 1:
-            getNewSales(names, values, amount);
+            getNewSales();
             break;
             case 2:
-            printSales(names, values, amount);
+            printSales();
             break;
             case 3: 
-            modifySales(names, values, amount);
+            modifySales();
             break;
             case 4:
-            findSale(names, values, amount);
+            findSale();
             break;
             case 5:
-            salesInRange(names, values, amount);
+            salesInRange();
             break;
             case 6: 
-            calculateTotal(values, amount);
+            calculateTotal();
             break; 
             case 7: 
                 cout <<"saliendo del programa " <<endl;
@@ -59,41 +56,31 @@ void run(){
     {
         for(int i=0; i < amount; i ++)
         {
-            delete[] names[i];
+            delete[] names;
         }
         delete[] names;
     }
     delete[] values;
 }
 
-void getNewSales(char**& names, int*& values, int& amount){
+void getNewSales(){
     cout <<"¿ingrese el numero de ventas que desea registrar: " ;
     cin >>amount;
 
-    if (names != nullptr) {
-    for (int i = 1; i < amount; i++) {
-        delete[] names[i];
-    }
-    delete[] names;
-    delete[] values;
-}
-
-    names= new char*[amount];
-    values= new int[amount];
+    names = new string[amount];
+    values = new int[amount];
 
     for(int i=0; i < amount; i++){
-        names[i]=new char[30];
-
         cout <<"ingrese la venta realizada # " <<i+1 <<":";
         cin >>names[i];
 
         cout <<"ingrese el valor de la venta realizada # " <<i+1 <<": ";
         cin >>values[i]; 
     }
-cout <<"ventas registradas de forma correcta " <<endl;
+    cout <<"ventas registradas de forma correcta " <<endl;
 }
 
-void printSales(char** names, int* values, int amount){
+void printSales(){
     if(amount ==0)
     {
         cout <<"no se han registrado ventas " <<endl;
@@ -107,52 +94,45 @@ void printSales(char** names, int* values, int amount){
     }
 }
 
-void modifySales(char ** names, int* values, int amount){
+void modifySales(){
     if(amount==0)
     {
         cout <<"no hay ventas registradas aun " <<endl;
         return;
     }
 
-    char search[30];
+    string search;
     cout <<"ingrese el nombre de la venta que desea modificar : ";
-    cin >>search;
+    cin >> search;
 
     bool found=false;
     for(int i=0; i < amount; i++){
-        int k=0;
-        while(names[i][k]== search[k] &&names[i][k] != '\0' && search[k] !='\0'){
-            k++;
-        }
-        cout <<"venta: " <<names[i] <<" valor actual: $ " <<values[i] <<endl;
+        if (names[i] == search)
+        {
+            cout <<"venta: " <<names[i] <<" valor actual: $ " <<values[i] <<endl;
             cout <<"ingrese el valor nuevo de venta: ";
             cin >>values[i];
             cout <<"valor actualizado " <<endl;
             found= true;
-        
+            break;
+        }
     }
     if(!found) cout <<"venta no encontrada " <<endl;
 }
 
-void findSale(char** names, int* values, int amount){
+void findSale(){
     if(amount==0){
         cout <<"no hay ventas registradas aun " <<endl;
         return;
     }
 
-    char search[30];
+    string search;
     cout <<"ingrese el nombre dr la venta q desea buscar: ";
     cin >> search;
 
     bool found= false;
     for(int i=0; i < amount; i++){
-        int j=0;
-
-        while(names[i][j]==search[j] && names[i][j] != '\0' && search[j]!= '\0'){
-            j++;
-        }
-
-        if(names[i][j]== '\0' &&search[j]== '\0'){
+        if(names[i] == search){
             cout <<"venta encontrada en la posicion " <<i+1 <<"con valor $" <<values[i] <<endl;
             found =true;
             break;
@@ -163,7 +143,7 @@ if(!found )cout <<"venta no encontrada " <<endl;
 }
 
 
-void salesInRange(char** names, int* values, int amount){
+void salesInRange(){
         if(amount ==0){
        cout <<"no hay ventas registradas aun " <<endl;
         return;
@@ -187,7 +167,7 @@ void salesInRange(char** names, int* values, int amount){
 }
 
 
-void calculateTotal(int* values, int amount){
+void calculateTotal(){
     if(amount ==0)
     {
         cout <<"no hay ventas registradas " <<endl;
